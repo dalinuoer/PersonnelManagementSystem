@@ -1,42 +1,26 @@
 package dao;
 
 
-
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
-
 import java.sql.ResultSet;
-
 import java.sql.SQLException;
-
-
-
-import po.Labour;
-
+import po.Group;
 import util.DBUtil;
 
 
 
-/**
-
- * @author Qin Hao
-
- * @date 2020/5/27
-
- * 工会表Labour的增删改查
-
- */
-
-public class LabourDao {
-
-	public int add(Labour labour) {
+public class GroupDao {
+	
+	//增
+	public int add(Group group) {
 
 		Connection conn = DBUtil.getConn();
 
-		String sql = "insert into labour(name, master, description) "
+		String sql = "insert into team(name, master, labourid, description) "
 
-				+ "values(?, ?, ?)";
+				+ "values(?, ?, ?, ?)";
 
 		PreparedStatement pstmt = null;
 
@@ -46,11 +30,13 @@ public class LabourDao {
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, labour.getName());
+			pstmt.setString(1, group.getName());
 
-			pstmt.setInt(2, labour.getMaster());
+			pstmt.setInt(2, group.getMaster());
 
-			pstmt.setString(3, labour.getDescription());
+			pstmt.setInt(3, group.getLabourid());
+			
+			pstmt.setString(4, group.getDescription());
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -70,14 +56,12 @@ public class LabourDao {
 		return result;
 
 	}
-
-	
-
+	//删
 	public int delete(int id) {
 
 		Connection conn = DBUtil.getConn();
 
-		String sql = "delete from labour where id = ?";
+		String sql = "delete from team where id = ?";
 
 		PreparedStatement pstmt = null;
 
@@ -110,82 +94,50 @@ public class LabourDao {
 	}
 
 	
-
-	public int update(int id, Labour labour) {
-
+	public int update(int id,Group group) {
 		Connection conn = DBUtil.getConn();
-
-		String sql = "update labour set name = ?, master = ?, description = ? where id = ?";
-
-		PreparedStatement pstmt = null;
-
-		int result = 0;
-
-		try {
-
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setString(1, labour.getName());
-
-			pstmt.setInt(2, labour.getMaster());
-
-			pstmt.setString(3, labour.getDescription());
+		String sql="update team set name=?,master=?,labourid=?,description= ? where id=?";
+		PreparedStatement pstmt=null;
+		int result=  0;
+		try 
+		{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, group.getName());
+			pstmt.setInt(2, group.getMaster());
+			pstmt.setInt(3,group.getLabourid());
+			pstmt.setString(4,group.getDescription());
+			pstmt.setInt(5,id);
 			
-			pstmt.setInt(4, id);
-
+			result=pstmt.executeUpdate();
 			
-
-			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-
-			// TODO Auto-generated catch block
-
+		}catch(SQLException e) {
 			e.printStackTrace();
-
-		} finally {
-
+		}finally {
 			DBUtil.closePstmt(pstmt);
-
 			DBUtil.closeConn(conn);
-
 		}
-
+		
 		return result;
-
-	}
-
 	
-
-	public Labour findLabourById(int id) {
+	}
+	
+	public Group findGroupById(int id) {
 
 		Connection conn = DBUtil.getConn();
-
-		String sql = "select * from labour where id = ?";
-
-		PreparedStatement pstmt = null;
-
-		ResultSet rSet = null;
-
-		Labour labour = null;
+		String sql = "select * from team where id = ?";
+    	PreparedStatement pstmt = null;
+    	ResultSet rSet = null;
+		Group group = null;
 
 		try {
 
 			pstmt = conn.prepareStatement(sql);
-
 			pstmt.setInt(1, id);
-
-			
-
 			rSet = pstmt.executeQuery();
 
-			
-
-			if (rSet.next()) {
-
-				labour = new Labour(rSet.getInt(1), rSet.getString(2), 
-
-						rSet.getInt(3), rSet.getString(4));
+			if (rSet.next()) { 
+				    group = new Group(rSet.getInt(1), rSet.getString(2), 
+					rSet.getInt(3), rSet.getInt(4),rSet.getString(5));
 
 			}
 
@@ -196,120 +148,90 @@ public class LabourDao {
 			e.printStackTrace();
 
 		} finally {
-
+			
 			DBUtil.closeRst(rSet);
-
 			DBUtil.closePstmt(pstmt);
-
 			DBUtil.closeConn(conn);
 
 		}
 
-		return labour;
+		return group;
 
 	}
-
 	
-
-	public Labour findLabourByName(String name) {
+	public Group findGroupByName(String name) {
 
 		Connection conn = DBUtil.getConn();
-
-		String sql = "select * from labour where name = ?";
-
+		String sql = "select * from team where name = ?";
 		PreparedStatement pstmt = null;
-
 		ResultSet rSet = null;
-
-		Labour labour = null;
-
+		Group group=null;
 		try {
-
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rSet = pstmt.executeQuery();
-			if (rSet.next()) {
-
-				labour = new Labour(rSet.getInt(1), rSet.getString(2), 
-
-						rSet.getInt(3), rSet.getString(4));
+			
+			if(rSet.next()) {
+				
+				group=new Group(rSet.getInt(1), rSet.getString(2), 
+						rSet.getInt(3),rSet.getInt(4),rSet.getString(5));
 
 			}
 
 		} catch (SQLException e) {
 
 			// TODO Auto-generated catch block
-
+			
 			e.printStackTrace();
 
 		} finally {
 
 			DBUtil.closeRst(rSet);
-
 			DBUtil.closePstmt(pstmt);
-
 			DBUtil.closeConn(conn);
 
 		}
 
-		return labour;
+		return group;
 
 	}
-
 	
-
-	public Labour findLabourByMaster(int master) {
+	public Group findGroupByMaster(int master) {
 
 		Connection conn = DBUtil.getConn();
-
-		String sql = "select * from labour where master = ?";
-
+		String sql = "select * from team where master = ?";
 		PreparedStatement pstmt = null;
-
 		ResultSet rSet = null;
-
-		Labour labour = null;
+		Group group = null;
 
 		try {
-
+			
 			pstmt = conn.prepareStatement(sql);
-
 			pstmt.setInt(1, master);
-
-			
-
 			rSet = pstmt.executeQuery();
-
-			
-
 			if (rSet.next()) {
-
-				labour = new Labour(rSet.getInt(1), rSet.getString(2), 
-
-						rSet.getInt(3), rSet.getString(4));
+				group = new Group(rSet.getInt(1), rSet.getString(2), 
+						rSet.getInt(3),rSet.getInt(4),rSet.getString(5));
 
 			}
 
 		} catch (SQLException e) {
 
 			// TODO Auto-generated catch block
-
+			
 			e.printStackTrace();
 
 		} finally {
 
 			DBUtil.closeRst(rSet);
-
 			DBUtil.closePstmt(pstmt);
-
 			DBUtil.closeConn(conn);
 
 		}
 
-		return labour;
+		return group;
 
 	}
-
-	
 
 }
