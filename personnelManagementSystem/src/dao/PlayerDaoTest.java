@@ -3,6 +3,8 @@ package dao;
 import static org.junit.Assert.*;
 
 
+import java.util.Date;
+
 import org.junit.Test;
 
 import po.Player;
@@ -15,8 +17,8 @@ public class PlayerDaoTest {
 		Player player = new Player();
 		player.setName("小吴");
 		player.setPwd("123456Y");
-		player.setGroupid(234);
-		player.setDate("2000-10-10 22:10:10");
+		player.setGroupid(0);
+		player.setDate(new Date());
 		int result=playerdao.add(player);
 		System.out.println("添加操作是否成功:"+result);	
 	}
@@ -33,7 +35,7 @@ public class PlayerDaoTest {
 		player.setName("小明");
 		player.setPwd("123456S");
 		player.setGroupid(299);
-		player.setDate("2000-11-11 12:22:20");
+		player.setDate(new Date());
 		int result=playerdao.update(6, player);
 		System.out.println("更新是否成功"+result);
 		
@@ -59,3 +61,4 @@ public class PlayerDaoTest {
 	}
 
 }
+
