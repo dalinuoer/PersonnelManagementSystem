@@ -2,6 +2,8 @@ package dao;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Test;
 
 import po.Apply;
@@ -12,7 +14,7 @@ public class ApplyDaoTest {
 	@Test
 	public void testAdd() {
 		Apply apply=new Apply();
-		apply.setDate("2019-01-01");
+		apply.setDate(new Date());
 		apply.setPlayerid(220856799);
 		apply.setContent("我想加入公会1");
 		int result = applydao.add(apply);
