@@ -15,7 +15,7 @@ public class ApplyDaoTest {
 	public void testAdd() {
 		Apply apply=new Apply();
 		apply.setDate(new Date());
-		apply.setPlayerid(220856799);
+		apply.setPlayerid(2256799);
 		apply.setContent("我想加入公会1");
 		int result = applydao.add(apply);
 		System.out.println("add result ："+result);

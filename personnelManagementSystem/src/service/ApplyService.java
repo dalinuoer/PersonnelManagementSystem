@@ -13,18 +13,13 @@ public class ApplyService {
 	}
 	
 	//申请
-	public int applyToGroup(int playerid,String content) {
+	public int applyToGroup(Apply apply) {
 		//当前已有申请 servlet层查看
-		Apply apply = new Apply();
-		apply.setContent(content);
-		apply.setPlayerid(playerid);
-		apply.setDate(new Date());
 		return applydao.add(apply);
 	}
-	
-	//
-	
+
 	//处理完一个当即删除一个
+	//用户自己撤销申请
 	public int deleteApply(int id) {
 		return applydao.delete(id);
 		

@@ -11,9 +11,7 @@ public class GroupService {
 		// TODO Auto-generated constructor stub
 	}
     
-	  private GroupDao dao =new GroupDao();
-	  
-	  
+	  private GroupDao dao =new GroupDao(); 
 	  //有重名的返回-1
 	  public int createGroup(String name,String labouridStr,String masterStr,String description ) {
 		  if(dao.findGroupByName(name)!=null) {
@@ -32,13 +30,9 @@ public class GroupService {
 	  public int getCountOfGroup(int id) {
 		  return dao.getCountOfGroup(id);
 	  }
-	  
-	  
 	  public Group findGroupByName(String name) {
 		  return dao.findGroupByName(name);
-	  }
-	  
-	  
+	  }	  
 	  public ArrayList<Group> findAllGroup(){
 		  return dao.findAllGroup();
 	  }

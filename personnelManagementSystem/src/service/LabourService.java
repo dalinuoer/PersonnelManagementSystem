@@ -19,7 +19,7 @@ public class LabourService {
     	return dao.add(labour);
 
     }
-    
+   
     public Labour GetlabourByid(int labourid) {
     	return dao.findLabourById(labourid);
     }
@@ -29,7 +29,6 @@ public class LabourService {
     	if(a!=null&&labour.getId()!=id) {
     		return -1;
     	}
-    	return dao.update(id, labour);
-    	
+    	return dao.update(id, labour);	
     }
 }

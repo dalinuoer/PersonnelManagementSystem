@@ -42,10 +42,8 @@ public class PlayerService {
 	//只需要传入名称就可以了吧
    public int dropGroup(int id,Player player) {
 	  player.setGroupid(0);
-	  player.setDate(new Date());
-	  
-	  return dao.update(id, player);
-	   
+	  player.setDate(new Date());  
+	  return dao.update(id, player);  
    }
   //查询当前用户是否加入一个组的任务由客户端完成 
    //日期计算由servlet完成

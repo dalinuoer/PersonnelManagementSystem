@@ -2,14 +2,23 @@ package service;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Test;
+
+import po.Apply;
 
 public class ApplyServiceTest {
 	private ApplyService applyservice = new ApplyService();
 
 	@Test
 	public void testApplyToGroup() {
-		System.out.println(" apply result" + applyservice.applyToGroup(34, "lllaaaa"));
+		
+        Apply apply = new Apply();
+		apply.setPlayerid(345);
+		apply.setDate(new Date());
+		apply.setContent("contents");	
+		System.out.println(" apply result" + applyservice.applyToGroup(apply));
 	}
 
 	@Test

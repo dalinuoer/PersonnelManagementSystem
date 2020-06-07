@@ -28,14 +28,16 @@ public class AdminDaoTest {
 	}
 
 	@Test
-	public void testFindByIDAndPwd() {
-		Admin admin=admindao.findByIDAndPwd(3,"222");
-		System.out.println("id and pwd"+admin.toString());
+	public void testFindByLabourIdAndPwd() {
+		Admin admin=admindao.findByLabourIdAndPwd(234,"222");
+		System.out.println("name and pwd :"+admin.toString());
 	}
 
+	
+	
 	@Test
 	public void testFindByLabourid() {
-		Admin admin=admindao.findByLabourid(225);
+		Admin admin=admindao.findByLabourId(225);
 		System.out.println("id and pwd"+admin.toString());
 	}
 

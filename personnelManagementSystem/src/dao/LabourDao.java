@@ -1,20 +1,35 @@
 package dao;
 
+
+
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
+
+
 import po.Labour;
+
 import util.DBUtil;
 
+
+
 /**
+
  * @author Qin Hao
+
  * @date 2020/5/27
+
  * 工会表Labour的增删改查
+
  */
 
 public class LabourDao {
+
 	public int add(Labour labour) {
 		Connection conn = DBUtil.getConn();
 		String sql = "insert into labour(name, master, description) "
@@ -23,12 +38,11 @@ public class LabourDao {
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
-
 			pstmt.setString(1, labour.getName());
 			pstmt.setInt(2, labour.getMaster());
 			pstmt.setString(3, labour.getDescription());
-
 			result = pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,6 +65,7 @@ public class LabourDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		} finally {
 			DBUtil.closePstmt(pstmt);
 			DBUtil.closeConn(conn);
@@ -65,16 +80,16 @@ public class LabourDao {
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
-
 			pstmt.setString(1, labour.getName());
 			pstmt.setInt(2, labour.getMaster());
 			pstmt.setString(3, labour.getDescription());
 			pstmt.setInt(4, id);
-
 			result = pstmt.executeUpdate();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		} finally {
 			DBUtil.closePstmt(pstmt);
 			DBUtil.closeConn(conn);
@@ -93,12 +108,13 @@ public class LabourDao {
 			pstmt.setInt(1, id);
 			rSet = pstmt.executeQuery();
 			if (rSet.next()) {
-				labour = new Labour(rSet.getInt(1), rSet.getString(2),
-						rSet.getInt(3), rSet.getString(4));
+				labour = new Labour(rSet.getInt(1), rSet.getString(2), 
+					rSet.getInt(3), rSet.getString(4));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		} finally {
 			DBUtil.closeRst(rSet);
 			DBUtil.closePstmt(pstmt);
@@ -118,20 +134,20 @@ public class LabourDao {
 			pstmt.setString(1, name);
 			rSet = pstmt.executeQuery();
 			if (rSet.next()) {
-				labour = new Labour(rSet.getInt(1), rSet.getString(2),
+				labour = new Labour(rSet.getInt(1), rSet.getString(2), 
 						rSet.getInt(3), rSet.getString(4));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally { DBUtil.closeRst(rSet);
+		} finally {
+			DBUtil.closeRst(rSet);
 			DBUtil.closePstmt(pstmt);
 			DBUtil.closeConn(conn);
 		}
 		return labour;
 	}
-
-
+	
 	public Labour findLabourByMaster(int master) {
 		Connection conn = DBUtil.getConn();
 		String sql = "select * from labour where master = ?";
@@ -139,11 +155,11 @@ public class LabourDao {
 		ResultSet rSet = null;
 		Labour labour = null;
 		try {
-			pstmt = conn.prepareStatement(sql);
+	    	pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, master);
 			rSet = pstmt.executeQuery();
 			if (rSet.next()) {
-				labour = new Labour(rSet.getInt(1), rSet.getString(2),
+				labour = new Labour(rSet.getInt(1), rSet.getString(2), 
 						rSet.getInt(3), rSet.getString(4));
 			}
 		} catch (SQLException e) {
