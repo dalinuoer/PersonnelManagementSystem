@@ -1,0 +1,145 @@
+﻿.header {
+    border-color: navy;
+    background-color: navy;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.centerContext {
+    border: solid 1px navy;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    bottom: 120px;
+    top: 80px;
+    color: black;
+    left: 10px;
+    right: 10px;
+    margin: 0 auto;
+    z-index: -1;
+}
+
+.footer {
+    border: solid 1px navy;
+    background-color: navy;
+    height: auto;
+    line-height: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.left {
+    border-color: azure;
+    background-color: azure;
+    width: 10%;
+    float: left;
+    height: 100%;
+    line-height: 30px;
+    margin-bottom: 40px;
+    overflow: auto;
+    color: black;
+}
+
+.right {
+    border: white;
+    height: 100%;
+    width: 90%;
+    background-color: white;
+    overflow: auto;
+}
+
+.a {
+    color: black;
+    margin: 0 auto;
+    text-decoration: none;
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.choose-part {
+    background-color: ghostwhite;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    color: black;
+}
+
+#search {
+    position: relative;
+    padding-top: 3px;
+    height: 60px;
+    width: 500px;
+    text-align: center;
+}
+
+#input {
+    position: absolute;
+    font-size: 40px;
+    width: 400px;
+    height: 40px;
+    border: ridge;
+    background: none;
+    top: 20px;
+}
+
+#go {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    top: 80px;
+    left: 200px;
+    left: 250px;
+    /*cursor 属性规定要显示的光标的类型（形状)*/
+    cursor: pointer;
+    border: ridge;
+    background-color: cornflowerblue;
+    display: block;
+}
+
+.form {
+    text-align: center;
+}
+
+.body-part {
+    width: 40%;
+    height: 40%;
+    padding-left: 25%;
+    padding-right: 30%;
+    padding-bottom: 1%;
+}
+
+.sign-text {
+    margin: 4px;
+    background: rgba(255,255,255,0);
+    width: 65%;
+    height: 18px;
+    padding-left: 50px;
+    background-color: white;
+}
+
+.sign-btn {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background: #487eb0;
+    color:azure;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .sign-btn:hover {
+        transform: scale(0.96);
+    }
