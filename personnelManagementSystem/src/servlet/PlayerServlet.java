@@ -40,12 +40,15 @@ public class PlayerServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		System.out.println(pwd);
 		Player player = playerService.login(name, pwd);
+		PrintWriter out = response.getWriter();
 		if(player != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("player", player);
+			out.print("<script>alert('登录成功!');</script>");
 			response.sendRedirect("home-page.jsp");
 		} else {
 			request.setAttribute("name", name);
+			out.print("<script>" + "alert('登录失败!');</script>");
 			request.getRequestDispatcher("log_in.jsp").forward(request, response);
 		}
 	}
@@ -95,6 +98,7 @@ public class PlayerServlet extends HttpServlet {
 			out.print("<script>" + "alert('修改成功!');" + "window.parent.location.href='" + request.getContextPath()
 			+ "home-page.jsp';" + "</script>");
 		} else {
+			// TODO:需要增加一个player_update.jsp，玩家修改个人用户名和密码
 			out.print("<script>" + "alert('修改失败!');" + "window.location.href='" + request.getContextPath()
 			+ "player_update.jsp';" + "</script>");
 		}
