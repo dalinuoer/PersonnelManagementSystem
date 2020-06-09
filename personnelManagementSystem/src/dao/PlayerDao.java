@@ -1,27 +1,16 @@
 package dao;
 
-
 import java.sql.Connection;
-
-
-
-
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.sql.Types;
-import java.util.Date;
 
 import po.Player;
 import util.DBUtil;
 
-
-
-
 public class PlayerDao {
-	
 	//增
 	public int add(Player player) {
 		Connection conn = DBUtil.getConn();
@@ -80,6 +69,28 @@ public class PlayerDao {
 			pstmt.setTimestamp(4, new Timestamp(player.getDate().getTime()));
 			//pstmt.setString(4,player.getDate());
 			pstmt.setInt(5,id);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.closePstmt(pstmt);
+			DBUtil.closeConn(conn);
+		}
+		return result;
+	}
+	
+	public int updateByPlayer(int id,Player player) {
+		Connection conn = DBUtil.getConn();
+		String sql="update player set name=?,pwd=? where id=?";
+		PreparedStatement pstmt=null;
+		int result=  0;
+		try 
+		{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, player.getName());
+			pstmt.setString(2, player.getPwd());
+			//pstmt.setString(4,player.getDate());
+			pstmt.setInt(3,id);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

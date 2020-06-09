@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*,java.text.*" pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="utf-8" />
     <title>工会人员管理系统</title>
     <link rel="stylesheet" type="text/css" href="./log_in.css" />
     <style>
@@ -11,12 +9,26 @@
             list-style-type: none;
         }
     </style>
+    <script type="text/javascript">
+	function verifyInfo() {
+		//用户名
+		if(!verifyUserName(document.form1.name.value)) {
+			alert("请按要求填写用户名");
+			return false;
+		}
+		//密码
+		if(!verifyPwd(document.form1.pwd.value)) {
+			alert("请按照要求填写密码");
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
     <div style="height:auto; width:auto;">
         <header class="header">工会人员管理系统</header>
     </div>
-
+	
     <div class="centerContext">
         <div class="left">
             <div>
@@ -58,7 +70,6 @@
                 <span>
                     <a class="a" href="./about_us.jsp">关于我们</a>
                 </span>
-
             </div>
         </div>
         <div class="right">
@@ -69,16 +80,11 @@
             </div>
             <div class="body-part">
                 <div class="sign">
-                    <form action="register.jsp" method="post">
+                    <form action="${pageContext.request.contextPath}/PlayerServlet?method=register" name="form1" method="post" onsubmit="return verifyLogin()">
                         <h2>注册</h2>
-                        <input class="sign-text" type="text" placeholder="输入手机号码" />
-                        <input class="sign-text" type="password" placeholder="输入验证码">
-                        <input class="sign-btn" type="submit" value="获取验证码">
-                        <p>
-                            <label class="sign-cek">
-                                <input type="checkbox" name="sex" value="1">记住密码
-                            </label>
-                        </p>
+                        <input class="input1" type="text" name="name" placeholder="输入用户名" />
+                        <input class="input1" type="password" name="pwd" placeholder="输入密码">
+                        <input class="sign-btn" type="submit" value="注册">
                     </form>
                 </div>
             </div>

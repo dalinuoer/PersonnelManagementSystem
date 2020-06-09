@@ -39,7 +39,7 @@ public class PlayerServiceTest {
 		player.setPwd("ddd");
 		player.setGroupid(34);
 		player.setDate(new Date());
-		int result = ps.changeNameOrPwd(player.getId(), player);
+		int result = ps.updateByPlayer(player.getId(), player);
 		System.out.println("改密"+ result);
 	}
 

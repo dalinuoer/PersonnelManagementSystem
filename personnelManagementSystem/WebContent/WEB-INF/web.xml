@@ -4,9 +4,19 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>home-page.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PlayerServlet</display-name>
+    <servlet-name>PlayerServlet</servlet-name>
+    <servlet-class>servlet.PlayerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlayerServlet</servlet-name>
+    <url-pattern>/PlayerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

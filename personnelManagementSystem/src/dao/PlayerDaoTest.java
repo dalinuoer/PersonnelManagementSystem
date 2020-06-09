@@ -57,7 +57,6 @@ public class PlayerDaoTest {
 	public void testFindPlayerByNameAndPwd() {
 		Player player=playerdao.findPlayerByNameAndPwd("小胡", "123456S");
 		System.out.println("by name查找"+player.toString());
-		
 	}
 
 }
