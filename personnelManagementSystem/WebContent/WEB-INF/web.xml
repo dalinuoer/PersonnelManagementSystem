@@ -19,4 +19,54 @@
     <servlet-name>PlayerServlet</servlet-name>
     <url-pattern>/PlayerServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminServlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GroupServlet</display-name>
+    <servlet-name>GroupServlet</servlet-name>
+    <servlet-class>servlet.GroupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupServlet</servlet-name>
+    <url-pattern>/GroupServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LabourServlet</display-name>
+    <servlet-name>LabourServlet</servlet-name>
+    <servlet-class>servlet.LabourServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LabourServlet</servlet-name>
+    <url-pattern>/LabourServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ApplyServlet</display-name>
+    <servlet-name>ApplyServlet</servlet-name>
+    <servlet-class>servlet.ApplyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApplyServlet</servlet-name>
+    <url-pattern>/ApplyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InfoServlet</display-name>
+    <servlet-name>InfoServlet</servlet-name>
+    <servlet-class>servlet.InfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InfoServlet</servlet-name>
+    <url-pattern>/InfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,10 +1,12 @@
 package service;
+
 import dao.LabourDao;
 import po.Labour;
 
 public class LabourService {
 	private LabourDao dao = new LabourDao();
-	LabourService() {
+	
+	public LabourService() {
 		// TODO Auto-generated constructor stub
 	}
     

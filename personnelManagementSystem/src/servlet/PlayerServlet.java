@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,21 +46,23 @@ public class PlayerServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("player", player);
 			out.print("<script>alert('登录成功!');</script>");
-			response.sendRedirect("home-page.jsp");
+			response.sendRedirect("***.jsp");
 		} else {
 			request.setAttribute("name", name);
 			out.print("<script>" + "alert('登录失败!');</script>");
-			request.getRequestDispatcher("log_in.jsp").forward(request, response);
+			request.getRequestDispatcher("***.jsp").forward(request, response);
 		}
 	}
+    
     // 注销
     protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("player");
 		PrintWriter out = response.getWriter();
 		out.print("<script>" + "window.parent.location.href='" + request.getContextPath()
-		+ "home-page.jsp';" + "</script>");
+		+ "***.jsp';" + "</script>");
 	}
+    
     // 注册
     protected void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String name = request.getParameter("name");
@@ -70,14 +73,15 @@ public class PlayerServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if (result == 1) {
 			out.print("<script>" + "alert('注册成功!');" + "window.parent.location.href='" + request.getContextPath()
-			+ "log_in.jsp';" + "</script>");
+			+ "***.jsp';" + "</script>");
 		} else {
 			out.print("<script>" + "alert('注册失败!');" + "window.location.href='" + request.getContextPath()
-			+ "register.jsp';" + "</script>");
+			+ "***.jsp';" + "</script>");
 		}
 	}
+    
     // 更新
-    protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void updateByPlayer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idStr = request.getParameter("id");
 		int id = Integer.parseInt(idStr);
 		String name = request.getParameter("name");
@@ -96,11 +100,35 @@ public class PlayerServlet extends HttpServlet {
 			session.removeAttribute("player");
 			session.setAttribute("player", player);
 			out.print("<script>" + "alert('修改成功!');" + "window.parent.location.href='" + request.getContextPath()
-			+ "home-page.jsp';" + "</script>");
+			+ "**.jsp';" + "</script>");
 		} else {
-			// TODO:需要增加一个player_update.jsp，玩家修改个人用户名和密码
 			out.print("<script>" + "alert('修改失败!');" + "window.location.href='" + request.getContextPath()
-			+ "player_update.jsp';" + "</script>");
+			+ "**.jsp';" + "</script>");
+		}
+	}
+    
+    protected void updateByAdmin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idStr = request.getParameter("id");
+		int id = Integer.parseInt(idStr);
+		String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
+		String groupidStr = request.getParameter("groupid");
+		int groupid = Integer.parseInt(groupidStr);
+	
+		Player player = new Player(id, name, pwd, groupid, new Date());
+		
+		int result = playerService.update(id, player);
+		
+		PrintWriter out = response.getWriter();
+		if (result == 1) {
+			HttpSession session = request.getSession();
+			session.removeAttribute("player");
+			session.setAttribute("player", player);
+			out.print("<script>" + "alert('修改成功!');" + "window.parent.location.href='" + request.getContextPath()
+			+ "**.jsp';" + "</script>");
+		} else {
+			out.print("<script>" + "alert('修改失败!');" + "window.location.href='" + request.getContextPath()
+			+ "**.jsp';" + "</script>");
 		}
 	}
 
@@ -118,8 +146,10 @@ public class PlayerServlet extends HttpServlet {
 			logout(request, response);
 		} else if (method.equals("register")) {
 			register(request, response);
-		} else if (method.equals("update")) {
-			update(request, response);
+		} else if (method.equals("updateByPlayer")) {
+			updateByPlayer(request, response);
+		} else if (method.equals("updateByAdmin")) {
+			updateByAdmin(request, response);
 		}
 	}
 

@@ -1,3 +1,0 @@
-group类改为team类，group是sql关键是，不能用
-datetime的hour minute second 读不了
-没有写连接的sql

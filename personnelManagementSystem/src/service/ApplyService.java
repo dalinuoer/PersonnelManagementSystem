@@ -1,6 +1,6 @@
 package service;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 import dao.ApplyDao;
 import po.Apply;
@@ -8,6 +8,7 @@ import po.Apply;
 public class ApplyService {
 	
 	private ApplyDao applydao = new ApplyDao();
+	
 	public ApplyService() {
 		// TODO Auto-generated constructor stub
 	}
@@ -23,6 +24,18 @@ public class ApplyService {
 	public int deleteApply(int id) {
 		return applydao.delete(id);
 		
+	}
+	
+	public int update(int id) {
+		return applydao.update(id);
+	}
+	
+	public ArrayList<Apply> findAllApply() {
+		return applydao.findAllApply();
+	}
+	
+	public Apply findApplyById(int id) {
+		return applydao.findApplyById(id);
 	}
 	    
 }
