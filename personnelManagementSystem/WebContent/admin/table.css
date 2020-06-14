@@ -108,3 +108,38 @@
     background-color: cornflowerblue;
     display: block;
 }
+
+.num{
+    text-align: center;
+}
+
+.choose-part {
+    background-color: ghostwhite;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    color: black;
+}
+
+.body-part{
+    position:center;
+    padding-left:15%;
+    padding-top:2%;
+    
+}
+
+.table {
+   width:70%;
+   height:auto;
+}
+
+.sign-btn {
+    background-color: white;
+    height: 30px;
+    border-radius: 0px;
+    cursor: pointer;
+    border: none;
+    color:navy;
+
+}

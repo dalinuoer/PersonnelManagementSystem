@@ -108,3 +108,38 @@
     background-color: cornflowerblue;
     display: block;
 }
+
+.body-part{
+    width:40%;
+    height:40%;
+    padding-left:25%;
+    padding-right:30%;
+    padding-bottom:1%;
+}
+
+.form{
+    text-align: center;
+}
+
+.sign-text{    
+    margin:4px;    
+    background: rgba(255,255,255,0);   
+    width:65%;
+    height:18px;
+    padding-left:50px;
+    background-color:white;
+}
+
+.sign-btn{    
+    margin-top: 15px;    
+    margin-bottom: 20px;    
+    background: #487eb0;    
+    color: azure;
+    height:30px;
+    border-radius: 6px;    
+    cursor: pointer;    
+
+}
+.sign-btn:hover{    
+    transform:scale(0.96);
+}
