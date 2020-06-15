@@ -14,8 +14,9 @@
 </head>
 <body>
     <div style="height:auto; width:auto;">
-        <header class="header">工会人员管理系统</header>
+        <header class="header">工会人员管理系统 欢迎${admin.labourid}工会的管理员!</header>
     </div>
+    
 
     <div class="centerContext">
     	<div class="left">
@@ -28,6 +29,21 @@
                 </span>
                 <span>
                     <a class="a" href="./update.jsp">修改密码</a>
+                </span>
+                <span>
+                    <a class="a" href="./update_player.jsp">修改玩家信息</a>
+                </span>
+                <span>
+                    <a class="a" href="./search_player.jsp">查找玩家信息</a>
+                </span>
+                <span>
+                    <a class="a" href="./search_group.jsp">查找团体信息</a>
+                </span>
+                <span>
+                    <a class="a" href="./create_group.jsp">创建团体</a>
+                </span>
+                <span>
+                    <a class="a" href="./delete_group.jsp">删除团体</a>
                 </span>
             </div>
         </div>

@@ -60,6 +60,8 @@ public class LabourServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		String method = request.getParameter("method");
 		if (method.equals("update")) {
 			update(request, response);

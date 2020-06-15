@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import po.Apply;
+import po.Group;
+import po.Player;
 import service.ApplyService;
 import service.GroupService;
 import service.LabourService;
@@ -53,17 +56,55 @@ public class InfoServlet extends HttpServlet {
 		request.setAttribute("applyList", applyList);
     	request.getRequestDispatcher("***.jsp").forward(request, response);
 	}
+    
+    protected void findGroupByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String name = request.getParameter("groupname");
+		
+		Group group = groupService.findGroupByName(name);
+		
+		PrintWriter out = response.getWriter();
+		if (group != null) {
+			request.setAttribute("searchedGroup", group);
+			request.getRequestDispatcher("/admin/group_info.jsp").forward(request, response);
+		} else {
+			out.print("<script>" + "alert('Failed!');</script>");
+			response.sendRedirect("/admin/search_group.jsp");
+		}
+	}
+    
+    protected void findPlayerByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String name = request.getParameter("playername");
+		
+		Player player = playerService.findPlayerByName(name);
+		
+		PrintWriter out = response.getWriter();
+		if (player != null) {
+			request.setAttribute("searchedPlayer", player);
+			request.getRequestDispatcher("/admin/player_info.jsp").forward(request, response);
+		} else {
+			out.print("<script>" + "alert('Failed!');</script>");
+			response.sendRedirect("/admin/search_player.jsp");
+		}
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		String method = request.getParameter("method");
 		if (method.equals("findAllApply")) {
 			findAllApply(request, response);
 		} else if (method.equals("findApplyById")) {
 			findApplyById(request, response);
+		} else if (method.equals("findGroupByName")) {
+			findGroupByName(request, response);
+		} else if (method.equals("findPlayerByName")) {
+			findPlayerByName(request, response);
 		}
 	}
 

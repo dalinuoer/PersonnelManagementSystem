@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>工会人员管理系统</title>
-    <link rel="stylesheet" type="text/css" href="./typesetting.css"/>
+    <link rel="stylesheet" type="text/css" href="/personnelManagementSystem/admin/typesetting.css"/>
         <style>
         ul {
             list-style-type: none;
@@ -21,7 +21,7 @@
                 <div class="title">搜索</div>
             </div>
             <div class="body-part">
-            	<form  name="form1" action="${pageContext.request.contextPath}/AdminServlet?method=login" method="post" onsubmit="return verifyLogin()">
+            	<form  name="form1" action="${pageContext.request.contextPath}/InfoServlet?method=findGroupByName" method="post" onsubmit="return verifyLogin()">
                     <input class="input" type="text" name="groupname" placeholder="请输入团体名">
                     <input class="sign-btn" type="submit" value="搜索团体">
                 </form>

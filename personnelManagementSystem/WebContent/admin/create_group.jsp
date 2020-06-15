@@ -18,70 +18,24 @@
     </div>
 
     <div class="centerContext">
-        <div class="left">
-            <div>
-                <span style="color:darkgrey">
-                    系统菜单
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./home-page.jsp">首页</a>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./log_in.jsp">登录</a>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./joined.jsp">浏览</a>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./application_group.jsp">申请</a>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./review_no.jsp">审核</a>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./self_information.jsp">个人信息</a>
-                </span>
-            </div>
-            <div>
-                <span>
-                    <a class="a" href="./about_us.jsp">关于我们</a>
-                </span>
-
-
-            </div>
-        </div>
         <div class="right">
-            <div class="choose-part">
-                <a class="a" href="./application_group.jsp">创建团体</a>
-                <span>/</span>
-                <a class="a" href="./application_person.jsp">加入团体</a>
-            </div>
-
             <div class="body-part">
-                <form class="form" action="application_group.jsp" method="post">
+                <form class="form" action="${pageContext.request.contextPath}/GroupServlet?method=create" method="post">
                     <p>
                         <label for="name">团体名称</label>
                         <input class="sign-text" type="text" name="name" placeholder="请输入团体名称"/>
                     </p>
                     <p>
-                        <label for="email">团体编号</label>
-                        <input class="sign-text" type="text" name="text" placeholder="请输入团体编号，8-18个数字"/>
+                        <label for="email">所在公会号</label>
+                        <input class="sign-text" type="text" name="labourid" placeholder="请输入所在公会号"/>
+                    </p>
+                    <p>
+                        <label for="text">会长号</label>
+                        <input class="sign-text" type="text" name="master" placeholder="请输入会长号"/>
                     </p>
                     <p>
                         <label for="web">团体描述</label>
-                        <input class="sign-text" type="text" name="text" placeholder="请输入团体描述，100-400字" style="height:100px"/>
+                        <input class="sign-text" type="text" name="description" placeholder="请输入团体描述" style="height:100px"/>
                     </p>
 
                     <p class="submit">

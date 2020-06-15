@@ -59,4 +59,8 @@ public class PlayerService {
 	   return dao.update(id, player);
 	   
    }
+   
+   public Player findPlayerByName(String name) {
+	   return dao.findPlayerByName(name);
+   }
 }

@@ -43,11 +43,11 @@ public class GroupServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		if (result == 1) {
-			out.print("<script>" + "alert('创建团体成功!');</script>");
-			response.sendRedirect("***.jsp");
+			out.print("<script>" + "alert('Successful!');</script>");
+			response.sendRedirect("/personnelManagementSystem/admin/index.jsp");
 		} else {
-			out.print("<script>" + "alert('创建团体失败!');</script>");
-			response.sendRedirect("***.jsp");
+			out.print("<script>" + "alert('Failed!');</script>");
+			response.sendRedirect("/personnelManagementSystem/admin/create_group.jsp");
 		}
 	}
     
@@ -61,11 +61,11 @@ public class GroupServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		if (result == 1) {
-			out.print("<script>" + "alert('删除团体成功!');</script>");
-			response.sendRedirect("***.jsp");
+			out.print("<script>" + "alert('Successful!');</script>");
+			response.sendRedirect("/personnelManagementSystem/admin/index.jsp");
 		} else {
-			out.print("<script>" + "alert('删除团体失败!');</script>");
-			response.sendRedirect("***.jsp");
+			out.print("<script>" + "alert('Failed!');</script>");
+			response.sendRedirect("/personnelManagementSystem/admin/delete_group.jsp");
 		}
 	}
     
@@ -100,6 +100,8 @@ public class GroupServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		String method = request.getParameter("method");
 		if (method.equals("create")) {
 			create(request, response);

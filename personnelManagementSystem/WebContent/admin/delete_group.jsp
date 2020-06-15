@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>工会人员管理系统</title>
-    <link rel="stylesheet" type="text/css" href="./typesetting.css"/>
+    <link rel="stylesheet" type="text/css" href="/personnelManagementSystem/admin/typesetting.css"/>
         <style>
         ul {
             list-style-type: none;
@@ -18,12 +18,12 @@
     <div class="centerContext">
         <div class="right">
             <div class="choose-part">
-                <div class="title">搜索</div>
+                <div class="title">删除团体</div>
             </div>
             <div class="body-part">
-                <form  name="form1" action="${pageContext.request.contextPath}/InfoServlet?method=findPlayerByName" method="post" onsubmit="return verifyLogin()">
-                    <input class="input" type="text" name="playername" placeholder="请输入玩家名" />
-                    <input class="sign-btn" type="submit" value="搜索玩家" />
+            	<form  name="form1" action="${pageContext.request.contextPath}/GroupServlet?method=delete" method="post" onsubmit="return verifyLogin()">
+                    <input class="input" type="text" name="id" placeholder="请输入团体号">
+                    <input class="sign-btn" type="submit" value="删除团体">
                 </form>
             </div>
         </div>

@@ -124,11 +124,11 @@ public class PlayerServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.removeAttribute("player");
 			session.setAttribute("player", player);
-			out.print("<script>" + "alert('修改成功!');" + "window.parent.location.href='" + request.getContextPath()
-			+ "/personnelManagementSystem/admin/index.jsp';" + "</script>");
+			out.print("<script>" + "alert('Successful!');" + "window.parent.location.href='" + request.getContextPath()
+			+ "/admin/index.jsp';" + "</script>");
 		} else {
-			out.print("<script>" + "alert('修改失败!');" + "window.location.href='" + request.getContextPath()
-			+ "/personnelManagementSystem/admin/update_player.jsp';" + "</script>");
+			out.print("<script>" + "alert('Failed!');" + "window.location.href='" + request.getContextPath()
+			+ "/admin/update_player.jsp';" + "</script>");
 		}
 	}
 
@@ -138,7 +138,7 @@ public class PlayerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		//response.setContentType("text/html;charset=utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		String method = request.getParameter("method");
 		if (method.equals("login")) {
 			login(request, response);
