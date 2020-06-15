@@ -45,11 +45,11 @@ public class AdminServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("admin", admin);
 			out.print("<script>" + "alert('管理员登录成功!');</script>");
-			response.sendRedirect("/admin/index.jsp");
+			response.sendRedirect("/personnelManagementSystem/admin/index.jsp");
 		} else {
 			request.setAttribute("labourid", labourid);
 			out.print("<script>" + "alert('管理员登录失败!');</script>");
-			request.getRequestDispatcher("/admin/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/personnelManagementSystem/admin/login.jsp").forward(request, response);
 		}
 	}
     
@@ -60,7 +60,7 @@ public class AdminServlet extends HttpServlet {
 		session.removeAttribute("admin");
 		PrintWriter out = response.getWriter();
 		out.print("<script>" + "window.parent.location.href='" + request.getContextPath()
-		+ "login.jsp';" + "</script>");
+		+ "/personnelManagementSystem/admin/login.jsp';" + "</script>");
 	}
     
     // 更新信息
@@ -82,10 +82,10 @@ public class AdminServlet extends HttpServlet {
 			session.removeAttribute("admin");
 			session.setAttribute("admin", admin);
 			out.print("<script>" + "alert('修改成功!');" + "window.parent.location.href='" + request.getContextPath()
-			+ "/admin/index.jsp';" + "</script>");
+			+ "/personnelManagementSystem/admin/index.jsp';" + "</script>");
 		} else {
 			out.print("<script>" + "alert('修改失败!');" + "window.location.href='" + request.getContextPath()
-			+ "/admin/update.jsp';" + "</script>");
+			+ "/personnelManagementSystem/admin/update.jsp';" + "</script>");
 		}
 	}
 

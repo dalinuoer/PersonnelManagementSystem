@@ -26,7 +26,7 @@
 	</script>
 </head>
 <body>
-	<!-- 存在错误信息弹窗提示 并且用户名回显 -->
+	<!-- 存在错误信息弹窗提示 -->
 	<c:if test="${not empty labourid}">
 		<script type="text/javascript">
 			alert("公会号或密码错误");
@@ -41,12 +41,14 @@
         <div class="right">
             <div class="body-part">
                 <div class="sign">
-                    <form  name="form1" action="${pageContext.request.contextPath}/AdminServlet?method=login" method="post" onsubmit="return verifyLogin()">
-                        <h2>登录</h2>
-                        <input class="input2" type="text" name="labourid" value="${labourid}" placeholder="请输入工会号" />
-                        <input class="input2" type="password" name="pwd" placeholder="请输入密码">
+                    <form  name="form1" action="${pageContext.request.contextPath}/PlayerServlet?method=updateByAdmin" method="post" onsubmit="return verifyLogin()">
+                        <h2>修改玩家信息</h2>
+                        <input class="input2" type="text" name="id" placeholder="请输入玩家账号" />
+                        <input class="input2" type="text" name="name" placeholder="请输入玩家名称" />
+                        <input class="input2" type="password" name="pwd" placeholder="请输入密码" />
+                        <input class="input2" type="text" name="groupid" placeholder="请输入玩家所在团体号" />
                         
-                        <input class="sign-btn" type="submit" value="登录">
+                        <input class="sign-btn" type="submit" value="提交修改">
                     </form>
                 </div>
             </div>

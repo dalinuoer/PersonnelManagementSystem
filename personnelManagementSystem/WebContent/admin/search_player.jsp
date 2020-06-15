@@ -1,11 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<base href="${pageContext.request.contextPath}/admin/">
     <title>工会人员管理系统</title>
-    <link  rel="stylesheet" type="text/css" href="./typesetting.css"/>
+    <link rel="stylesheet" type="text/css" href="./typesetting.css"/>
         <style>
         ul {
             list-style-type: none;
@@ -18,28 +16,15 @@
     </div>
 
     <div class="centerContext">
-    	<div class="left">
-           	<div>
-                <span style="color:darkgrey">系统菜单</span>
-            </div>
-           	<div>
-                <span>
-                    <a class="a" href="./index.jsp">首页</a>
-                </span>
-                <span>
-                    <a class="a" href="./update.jsp">修改密码</a>
-                </span>
-            </div>
-        </div>
         <div class="right">
             <div class="choose-part">
-                <div class="title">首页</div>
+                <div class="title">搜索</div>
             </div>
-
             <div class="body-part">
                 <div id="search">
-                    <input type="text" id="input" />
-                    <input type="button" id="go" value="搜　 索" />
+                	<input class="input" type="text" name="playername" placeholder="请输入玩家名">
+                    
+                    <input class="sign-btn" type="submit" value="搜索玩家">
                 </div>
             </div>
         </div>
@@ -52,7 +37,7 @@
             <li>QQ:1234567890</li>
             <li>联系电话：1234567890</li>
             <li>
-                <a href="./about_us.jsp" style="color: white; text-decoration: none">信息反馈</a>
+                <a href="./about.jsp" style="color: white; text-decoration: none">信息反馈</a>
             </li>
         </ul>
     </div>

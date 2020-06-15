@@ -125,10 +125,10 @@ public class PlayerServlet extends HttpServlet {
 			session.removeAttribute("player");
 			session.setAttribute("player", player);
 			out.print("<script>" + "alert('修改成功!');" + "window.parent.location.href='" + request.getContextPath()
-			+ "**.jsp';" + "</script>");
+			+ "/personnelManagementSystem/admin/index.jsp';" + "</script>");
 		} else {
 			out.print("<script>" + "alert('修改失败!');" + "window.location.href='" + request.getContextPath()
-			+ "**.jsp';" + "</script>");
+			+ "/personnelManagementSystem/admin/update_player.jsp';" + "</script>");
 		}
 	}
 
