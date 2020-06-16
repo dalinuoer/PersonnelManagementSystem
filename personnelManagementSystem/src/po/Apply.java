@@ -13,18 +13,19 @@ public class Apply {
 	private int playerid;
 	private String content;
 	private Date date;
-	private String status;
+	private int status;
 
 	public Apply() {
 		super();
 	}
 
-	public Apply(int id, int playerid, String content, Date date) {
+	public Apply(int id, int playerid, String content, Date date, int status) {
 		super();
 		this.id = id;
 		this.playerid = playerid;
 		this.content = content;
 		this.date = date;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -59,17 +60,18 @@ public class Apply {
 		this.date = date;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
 	@Override
 	public String toString() {
-		return "Apply [id=" + id + ", playerid=" + playerid + ", content=" + content + ", date=" + date + ", status="
+		return "Apply [id=" + id + ", playerid=" + playerid + ", content=" + 
+				content + ", date=" + date + ", status="
 				+ status + "]";
 	}
 }

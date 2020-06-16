@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import dao.GroupDao;
 import po.Group;
+import po.Page;
+import vo.GroupInfo;
 
 public class GroupService {
 
@@ -27,9 +29,24 @@ public class GroupService {
 		group.setDescription(description);
 		return dao.add(group);
 	}
+	
+	public Page<GroupInfo> findGroupByPage(String pageNoStr){
+		  int pageNo = 1;
+		  if( pageNoStr!=null && !pageNoStr.equals(""))
+		    {
+		      pageNo = Integer.parseInt(pageNoStr);
+		    }
+		  Page<GroupInfo> page = new Page<GroupInfo>();
+		  page.setPageNo(pageNo);
+		   return dao.findGroupByPage(page);	  
+	  }
 	  
 	public int getCountOfGroup(int id) {
 		return dao.getCountOfGroup(id);
+	}
+	
+	public Group findGroupById(int groupid) {
+		  return dao.findGroupById(groupid);
 	}
 	
 	public Group findGroupByName(String name) {

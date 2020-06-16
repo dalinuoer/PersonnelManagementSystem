@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <title>团体信息</title>
-    <link rel="stylesheet" type="text/css" href="/admin/message.css" />
+    <link rel="stylesheet" type="text/css" href="/personnelManagementSystem/admin/message.css" />
     <style>
         ul {
             list-style-type: none;

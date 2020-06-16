@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import po.Group;
+import po.Page;
 import util.DBUtil;
+import vo.GroupInfo;
 
 
 public class GroupDao {
@@ -208,6 +210,65 @@ public class GroupDao {
 			DBUtil.closeConn(conn);
 		}
 		return group;
+	}
+	
+	public int getGroupSum() {
+		Connection conn = DBUtil.getConn();
+		int count=0;
+		String sql = "select count(id) from team";
+		PreparedStatement pstmt = null;
+		ResultSet rSet = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rSet = pstmt.executeQuery();
+			if(rSet.next()) {
+				count = rSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block	
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeRst(rSet);
+			DBUtil.closePstmt(pstmt);
+			DBUtil.closeConn(conn);
+		}
+		return count;
+	}
+	
+	public Page<GroupInfo> findGroupByPage(Page<GroupInfo> page){
+		Connection conn = DBUtil.getConn();
+	    String sql = "select t.id,t.name,t.master,t.labourid,t.description,"
+	    		+ "l.name from team t,labour l where t.labourid = l.id limit ? ,?";
+	    ArrayList<GroupInfo> groupinfolist = new ArrayList<GroupInfo>();
+	    PreparedStatement pstmt = null;
+	    ResultSet rSet = null;
+	    page.setCountNo(getGroupSum()); 
+	    	try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1,(page.getPageNo()-1) * Page.show_items);
+		    	pstmt.setInt(2, Page.show_items);
+		    	rSet = pstmt.executeQuery();
+		    	while(rSet.next()) {
+		    		GroupInfo groupinfo = new GroupInfo();
+		    		groupinfo.setId(rSet.getInt(1));
+		    		groupinfo.setName(rSet.getString(2));
+		    		groupinfo.setMaster(rSet.getInt(3));
+		    		groupinfo.setLabourid(rSet.getInt(4));
+		    		groupinfo.setDescription(rSet.getString(5));
+		    		groupinfo.setLabourname(rSet.getString(6));
+		    		groupinfo.setNumber(getCountOfGroup(rSet.getInt(1)));
+		    		groupinfolist.add(groupinfo);
+		    	}
+		    	page.setList(groupinfolist);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				DBUtil.closeRst(rSet);
+				DBUtil.closePstmt(pstmt);
+				DBUtil.closeConn(conn);
+			}
+	    	return page;	
 	}
 
 }

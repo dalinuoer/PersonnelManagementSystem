@@ -20,6 +20,9 @@
 
     <div class="centerContext">
     	<div class="left">
+    		<div style="height:auto; width:auto;">
+         		<a href="${pageContext.request.contextPath}/AdminServlet?method=logout" style="color: black; text-decoration: none">注销</a>
+    		</div>
            	<div>
                 <span style="color:darkgrey">系统菜单</span>
             </div>

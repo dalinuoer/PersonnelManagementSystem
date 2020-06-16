@@ -18,7 +18,7 @@ public class PlayerService {
 	}
 	//用户名重复返回-1;否则返回 0 或1
 	//用户没有group时，设置值为0;
-	public int register(String name, String password) {
+	public int register(String name ,String password) {
 		if(dao.findPlayerByName(name)!=null) {
 			return -1;
 		}
@@ -31,21 +31,33 @@ public class PlayerService {
 	}
 	
 	//返回-1 便是用户名重复,传入的player已经为封装好的player
-	public int update(int id, Player player) {
+		public int update(int id, Player player) {
+			Player a = dao.findPlayerByName(player.getName());
+			if(a != null && a.getId()!=id) {
+				return -1;
+			}
+			return dao.update(id, player);
+		}
+		public int updateByPlayer(int id, Player player) {
+			Player a = dao.findPlayerByName(player.getName());
+			if(a != null && a.getId()!=id) {
+				return -1;
+			}
+			return dao.updateByPlayer(id, player);
+		}
+	
+	//返回-1 便是用户名重复,传入的player已经为封装好的player
+	public int changeNameOrPwd(int id,Player player) {
 		Player a = dao.findPlayerByName(player.getName());
 		if(a != null && a.getId()!=id) {
 			return -1;
 		}
 		return dao.update(id, player);
 	}
-	public int updateByPlayer(int id, Player player) {
-		Player a = dao.findPlayerByName(player.getName());
-		if(a != null && a.getId()!=id) {
-			return -1;
-		}
-		return dao.updateByPlayer(id, player);
-	}
 	
+	public Player findPlayerById(int id) {
+		return dao.findPlayerById(id);
+	}
 	//只需要传入名称就可以了吧
    public int dropGroup(int id,Player player) {
 	  player.setGroupid(0);

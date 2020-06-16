@@ -40,22 +40,22 @@ public class InfoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    // 所有申请
-    protected void findApplyById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-    	String idStr = request.getParameter("id");
-    	int id = Integer.parseInt(idStr);
-    	Apply apply = applyService.findApplyById(id);
-    	request.setAttribute("apply", apply);
-    	request.getRequestDispatcher("***.jsp").forward(request, response);
-	}
-    
-    protected void findAllApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ArrayList<Apply> applyList = applyService.findAllApply();
-		request.setAttribute("applyList", applyList);
-    	request.getRequestDispatcher("***.jsp").forward(request, response);
-	}
+//    // 所有申请
+//    protected void findApplyById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//    	String idStr = request.getParameter("id");
+//    	int id = Integer.parseInt(idStr);
+//    	Apply apply = applyService.findApplyById(id);
+//    	request.setAttribute("apply", apply);
+//    	request.getRequestDispatcher("***.jsp").forward(request, response);
+//	}
+//    
+//    protected void findAllApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		ArrayList<Apply> applyList = applyService.findAllApply();
+//		request.setAttribute("applyList", applyList);
+//    	request.getRequestDispatcher("***.jsp").forward(request, response);
+//	}
     
     protected void findGroupByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -69,7 +69,7 @@ public class InfoServlet extends HttpServlet {
 			request.getRequestDispatcher("/admin/group_info.jsp").forward(request, response);
 		} else {
 			out.print("<script>" + "alert('Failed!');</script>");
-			response.sendRedirect("/admin/search_group.jsp");
+			response.sendRedirect("/personnelManagementSystem/admin/search_group.jsp");
 		}
 	}
     
@@ -85,7 +85,7 @@ public class InfoServlet extends HttpServlet {
 			request.getRequestDispatcher("/admin/player_info.jsp").forward(request, response);
 		} else {
 			out.print("<script>" + "alert('Failed!');</script>");
-			response.sendRedirect("/admin/search_player.jsp");
+			response.sendRedirect("/personnelManagementSystem/admin/search_player.jsp");
 		}
 	}
 
@@ -98,9 +98,9 @@ public class InfoServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String method = request.getParameter("method");
 		if (method.equals("findAllApply")) {
-			findAllApply(request, response);
+			//findAllApply(request, response);
 		} else if (method.equals("findApplyById")) {
-			findApplyById(request, response);
+			//findApplyById(request, response);
 		} else if (method.equals("findGroupByName")) {
 			findGroupByName(request, response);
 		} else if (method.equals("findPlayerByName")) {

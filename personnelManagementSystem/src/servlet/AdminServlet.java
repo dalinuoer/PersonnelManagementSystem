@@ -60,7 +60,7 @@ public class AdminServlet extends HttpServlet {
 		session.removeAttribute("admin");
 		PrintWriter out = response.getWriter();
 		out.print("<script>" + "window.parent.location.href='" + request.getContextPath()
-		+ "/personnelManagementSystem/admin/login.jsp';" + "</script>");
+		+ "/admin/login.jsp';" + "</script>");
 	}
     
     // 更新信息

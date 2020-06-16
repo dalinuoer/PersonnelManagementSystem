@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import po.Group;
+import po.Page;
 import service.GroupService;
+import vo.GroupInfo;
 
 /**
  * @author Qin Hao
@@ -94,6 +96,34 @@ public class GroupServlet extends HttpServlet {
 			response.sendRedirect("***.jsp");
 		}
 	}
+    
+    protected void findGroupByPage(HttpServletRequest request, HttpServletResponse response) {
+    	String pageNoStr = request.getParameter("pageNo");
+    	Page<GroupInfo> page = groupService.findGroupByPage(pageNoStr);
+    	request.setAttribute("page", page);
+    	try {
+			request.getRequestDispatcher("/user/showAll.jsp").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+    }
+    
+    private void findGroupById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String groupidStr = request.getParameter("groupid");
+		System.out.println("进来了");
+		int groupid = Integer.parseInt(groupidStr);
+		Group group = groupService.findGroupById(groupid);
+	    int count = groupService.getCountOfGroup(groupid);
+		request.setAttribute("group", group);
+		request.setAttribute("number", count);
+		System.out.println(group.toString());
+		request.getRequestDispatcher("/user/personal.jsp").forward(request, response);;
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -107,7 +137,13 @@ public class GroupServlet extends HttpServlet {
 			create(request, response);
 		} else if (method.equals("delete")) {
 			delete(request, response);
-		}
+		} else if(method.equals("findGroupByPage")) {
+			findGroupByPage(request,response);
+		} else if(method.equals("findGroupById")) {
+			 System.out.println("正在doget");
+			 findGroupById(request,response);
+			 //System.out.println("正在doget");
+		 }
 	}
 
 	/**
